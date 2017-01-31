@@ -339,7 +339,7 @@ namespace NuGet.PackageManagement.UI
             // don't show this dialog for VS 2015
             return await Task.FromResult(true);
 #else
-            var projectsCouldChange = new List<NuGetProject>();
+            var potentialProjects = new List<NuGetProject>();
 
             // check if project is packages.config and it's dte project instance can also be converted to VSProject4.
             // otherwise don't show format selector dialog for this project
@@ -352,12 +352,12 @@ namespace NuGet.PackageManagement.UI
             {
                 if (!(await project.GetInstalledPackagesAsync(token)).Any())
                 {
-                    projectsCouldChange.Add(project);
+                    potentialProjects.Add(project);
                 }
             }
             
             // only show this dialog if there are any new project(s) with no installed packages.
-            if (projectsCouldChange.Count > 0)
+            if (potentialProjects.Count > 0)
             {
                 var packageManagementFormat = new PackageManagementFormat(uiService.Settings);
                 if (packageManagementFormat.IsDisabled)
@@ -366,13 +366,13 @@ namespace NuGet.PackageManagement.UI
                     // now check for default package format, if its set to PackageReference then update the project.
                     if (packageManagementFormat.SelectedPackageManagementFormat == 1)
                     {
-                        await uiService.UpdateNuGetProjectToPackageRef(projectsCouldChange);
+                        await uiService.UpdateNuGetProjectToPackageRef(potentialProjects);
                     }
 
                     return true;
                 }
 
-                packageManagementFormat.ProjectNames = projectsCouldChange
+                packageManagementFormat.ProjectNames = potentialProjects
                     .Select(project => project.GetMetadata<string>(NuGetProjectMetadataKeys.Name))
                     .OrderBy(name => name, StringComparer.OrdinalIgnoreCase).ToList();
 
@@ -382,7 +382,7 @@ namespace NuGet.PackageManagement.UI
                 // update nuget projects if user selected PackageReference option
                 if (result && packageManagementFormat.SelectedPackageManagementFormat == 1)
                 {
-                    await uiService.UpdateNuGetProjectToPackageRef(projectsCouldChange);
+                    await uiService.UpdateNuGetProjectToPackageRef(potentialProjects);
                 }
                 return result;
             }
