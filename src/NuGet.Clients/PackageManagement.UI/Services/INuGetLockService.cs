@@ -28,5 +28,13 @@ namespace NuGet.PackageManagement.UI
         /// </summary>
         /// <returns>A disposable object that will release the lock on disposed event.</returns>
         IDisposable AcquireLock();
+
+        /// <summary>
+        /// Try to obtain a lock with given timeout
+        /// </summary>
+        /// <param name="timeout">Waiting timoeout in millisecond.</param>
+        /// <param name="lockReleaser">Lock releaser object to release acquired lock.</param>
+        /// <returns>True, if lock is acquired.</returns>
+        bool TryAcquireLock(int timeout, out IDisposable lockReleaser);
     }
 }

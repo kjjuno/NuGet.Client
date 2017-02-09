@@ -26,6 +26,19 @@ namespace NuGet.PackageManagement.UI
             return new SemaphoreLockReleaser(_semaphore);
         }
 
+        public bool TryAcquireLock(int timeout, out IDisposable lockReleaser)
+        {
+            lockReleaser = null;
+            var result = _semaphore.Wait(timeout);
+            
+            if (result)
+            {
+                lockReleaser = new SemaphoreLockReleaser(_semaphore);
+            }
+
+            return result;
+        }
+
         public IAsyncLockAwaitable AcquireLockAsync(CancellationToken token)
         {
             return new SemaphoreLockAwaiter(_semaphore, token);
