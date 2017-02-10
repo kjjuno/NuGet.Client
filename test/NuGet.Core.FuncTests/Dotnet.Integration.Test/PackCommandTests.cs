@@ -34,7 +34,7 @@ namespace Dotnet.Integration.Test
                 var projectName = "ClassLibrary1";
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 // Act
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
                 msbuildFixture.RestoreProject(workingDirectory, projectName, string.Empty);
                 msbuildFixture.PackProject(workingDirectory, projectName, $"-o {workingDirectory}");
 
@@ -199,7 +199,7 @@ namespace Dotnet.Integration.Test
                 var projectName = "ClassLibrary1";
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -281,7 +281,7 @@ namespace Dotnet.Integration.Test
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
                 msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName);
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, referencedProject, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, referencedProject, "classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -372,7 +372,7 @@ namespace Dotnet.Integration.Test
                 var projectName = "ClassLibrary1";
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 // Act
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
                 msbuildFixture.RestoreProject(workingDirectory, projectName, string.Empty);
                 File.WriteAllText(Path.Combine(workingDirectory, "input.nuspec"), nuspecFileContent);
                 File.WriteAllText(Path.Combine(workingDirectory, "abc.txt"), "sample text");
@@ -435,7 +435,7 @@ namespace Dotnet.Integration.Test
                 var projectName = "ClassLibrary1";
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 // Act
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
                 msbuildFixture.RestoreProject(workingDirectory, projectName, string.Empty);
                 File.WriteAllText(Path.Combine(workingDirectory, "input.nuspec"), nuspecFileContent);
                 File.WriteAllText(Path.Combine(workingDirectory, "abc.txt"), "sample text");
@@ -488,7 +488,7 @@ namespace Dotnet.Integration.Test
                 var projectName = "ClassLibrary1";
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 // Act
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
                 msbuildFixture.RestoreProject(workingDirectory, projectName, string.Empty);
                 File.WriteAllText(Path.Combine(workingDirectory, "input.nuspec"), nuspecFileContent);
                 File.WriteAllText(Path.Combine(basePathDirectory, "abc.txt"), "sample text");
@@ -580,7 +580,7 @@ namespace Dotnet.Integration.Test
                 Directory.CreateDirectory(Path.Combine(workingDirectory, "folderA", "folderB"));
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -654,7 +654,7 @@ namespace Dotnet.Integration.Test
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " -t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -766,7 +766,7 @@ namespace Dotnet.Integration.Test
                 }
                 File.WriteAllText(pathToContent, "this is sample text in the content file");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -861,7 +861,7 @@ namespace Dotnet.Integration.Test
                 }
                 File.WriteAllText(pathToContent, "this is sample text in the content file");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -928,7 +928,7 @@ namespace Dotnet.Integration.Test
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " -t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -993,7 +993,7 @@ namespace Dotnet.Integration.Test
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " -t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -1054,7 +1054,7 @@ namespace Dotnet.Integration.Test
                 var projectName = "ClassLibrary1";
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 // Act
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
                 msbuildFixture.RestoreProject(workingDirectory, projectName, string.Empty);
                 msbuildFixture.PackProject(workingDirectory, projectName, $"-o {workingDirectory} /p:IncludeBuildOutput=false");
 
@@ -1104,7 +1104,7 @@ namespace Dotnet.Integration.Test
                 var projectName = "ClassLibrary1";
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 // Act
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
                 msbuildFixture.RestoreProject(workingDirectory, projectName, string.Empty);
                 msbuildFixture.PackProject(workingDirectory, projectName, $"-o {workingDirectory} /p:BuildOutputTargetFolder={buildOutputTargetFolder}");
 
@@ -1138,7 +1138,7 @@ namespace Dotnet.Integration.Test
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " -t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -1229,7 +1229,7 @@ namespace Dotnet.Integration.Test
                 Directory.CreateDirectory(Path.Combine(workingDirectory, "folderA", "folderB"));
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, "-t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -1291,7 +1291,7 @@ namespace Dotnet.Integration.Test
                 var workingDirectory = Path.Combine(testDirectory, projectName);
                 var projectFile = Path.Combine(workingDirectory, $"{projectName}.csproj");
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " -t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -1374,7 +1374,7 @@ namespace ClassLibrary
                 File.WriteAllText(Path.Combine(workingDirectory, "Utils", "Utility.cs"), utilitySrcFileContent);
                 File.WriteAllText(Path.Combine(workingDirectory, "Extensions", "ExtensionMethods.cs"), extensionSrcFileContent);
 
-                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " -t lib");
+                msbuildFixture.CreateDotnetNewProject(testDirectory.Path, projectName, " classlib");
 
                 using (var stream = new FileStream(projectFile, FileMode.Open, FileAccess.ReadWrite))
                 {

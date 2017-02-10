@@ -23,7 +23,7 @@ namespace Dotnet.Integration.Test
             TestDotnetCli = Path.Combine(cliDirectory, "dotnet.exe");
         }
 
-        internal void CreateDotnetNewProject(string solutionRoot, string projectName, string args = "")
+        internal void CreateDotnetNewProject(string solutionRoot, string projectName, string args = "console")
         {
             var workingDirectory = Path.Combine(solutionRoot, projectName);
             if (!Directory.Exists(workingDirectory))
@@ -120,7 +120,10 @@ namespace Dotnet.Integration.Test
                 foreach (var coreClrDll in Directory.GetFiles(Path.Combine(pathToPackSdk, "CoreCLR")))
                 {
                     var fileName = Path.GetFileName(coreClrDll);
-                    File.Copy(coreClrDll, Path.Combine(pathToSdkInCli, fileName), true);
+                    if (fileName != "NuGet.Build.Tasks.Pack.dll")
+                    {
+                        File.Copy(coreClrDll, Path.Combine(pathToSdkInCli, fileName), true);
+                    }
                 }
             }
 
